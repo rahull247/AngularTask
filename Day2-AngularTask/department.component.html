@@ -1,0 +1,45 @@
+
+<table>
+    <tr><td>Student Id:</td><td><input [disabled]="isstudentIdDisabled" type="text"  [(ngModel)]="studentId"  placeholder="Student Id"  /></td></tr>
+
+    <tr><td>Student Name:</td><td><input type="text"  [(ngModel)]="studentName"  placeholder="Student Name"  /></td></tr>
+    <tr><td>Student Department:</td><td><input type="text"  [(ngModel)]="studentDepartment"  placeholder="Student Department"  /></td></tr>
+    <tr><td>Student Age:</td><td><input type="text"  [(ngModel)]="studentAge"  placeholder="Student Age"  /></td></tr>
+    <tr><td>Student Class:</td><td><input type="text"  [(ngModel)]="studentClass"  placeholder="Student Class"  /></td></tr>
+<tr>
+<td><input type="button"  value="Get Student" (click)="getStudent()"></td>
+<td><input type="button"  value="Add Student" (click)="addStudent()"></td>
+</tr>
+<tr>
+<td><input type="button"  value="Update Student" (click)="updateStudent()"></td>
+<td><input type="button"  value="Clear Fields" (click)="clearFields()"></td>
+</tr>
+</table>
+<hr/>
+<table border="2"  width="500">
+  <tr>
+    <th>Student Id</th>
+    <th>Student Name</th>
+    <th>Student Department</th>
+    <th>Student Age</th>
+    <th>Student Class</th>
+    <th>Operations</th>
+  </tr>
+
+  <tr *ngFor="let item of studentArray">
+    <td>{{item.studentId}}</td>
+    <td>{{item.studentName}}</td>
+    <td>{{item.studentDepartment}}</td>
+    <td>{{item.studentAge}}</td>
+    <td>{{item.studentClass}}</td>
+    <td align="center">
+      <img src="{{selectImage}}" href="javascript:void(0);" (click)="selectStudent(item.studentId)">
+      <img src="{{deleteImage}}" href="javascript:void(0);" (click)="deletStudent(item.studentId)">
+    </td>
+  </tr>
+
+  <tr *ngIf="studentArray.length == 0">
+    <td colspan="4"; class="tableValues"> Empty values </td>
+  </tr>
+
+</table>
